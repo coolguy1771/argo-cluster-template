@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: system-upgrade-controller
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/coolguy1771/argo-cluster-template.git
+    targetRevision: HEAD
+    path: kubernetes/apps/system-upgrade/system-upgrade-controller/app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: system-upgrade
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: system-upgrade-controller-plans
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/coolguy1771/argo-cluster-template.git
+    targetRevision: HEAD
+    path: kubernetes/apps/system-upgrade/system-upgrade-controller/plans
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: system-upgrade

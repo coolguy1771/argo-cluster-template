@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudflare-ddns
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/coolguy1771/argo-cluster-template.git
+    targetRevision: HEAD
+    path: kubernetes/apps/networking/cloudflare-ddns/app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: networking

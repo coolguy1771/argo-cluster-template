@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/coolguy1771/argo-cluster-template.git
+    targetRevision: HEAD
+    path: kubernetes/apps/networking/ingress-nginx/app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: networking
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx-certificate
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/coolguy1771/argo-cluster-template.git
+    targetRevision: HEAD
+    path: kubernetes/apps/networking/ingress-nginx/certificates
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: networking

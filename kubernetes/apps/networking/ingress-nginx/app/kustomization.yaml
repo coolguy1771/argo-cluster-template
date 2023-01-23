@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: networking
+configMapGenerator:
+  - name: cloudflare-networks
+    files:
+      - ./cloudflare-networks.txt
+generatorOptions:
+  disableNameSuffixHash: true
+helmCharts:
+  - name: ingress-nginx
+    releaseName: ingress-nginx
+    namespace: networking
+    repo: https://kubernetes.github.io/ingress-nginx
+    version: 4.4.2
+    valuesFile: values.yaml

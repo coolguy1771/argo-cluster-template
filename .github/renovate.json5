@@ -22,7 +22,7 @@
   "pre-commit": {
     "enabled": true
   },
-  "flux": {
+  "argocd": {
     "fileMatch": ["kubernetes/.+\\.ya?ml$"]
   },
   "helm-values": {

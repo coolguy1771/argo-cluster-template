@@ -15,5 +15,5 @@ helmCharts:
     releaseName: cloudflare-ddns
     namespace: networking
     repo: https://bjw-s.github.io/helm-charts/
-    version: 1.3.2
+    version: 1.5.0
     valuesFile: values.yaml

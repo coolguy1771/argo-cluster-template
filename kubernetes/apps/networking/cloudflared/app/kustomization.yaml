@@ -3,17 +3,18 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: networking
 resources:
+  - ./dnsendpoint.yaml
   - ./secret.sops.yaml
 configMapGenerator:
-  - name: cloudflare-ddns-configmap
+  - name: cloudflared-configmap
     files:
-      - ./cloudflare-ddns.sh
+      - ./configs/config.yaml
 generatorOptions:
   disableNameSuffixHash: true
 helmCharts:
   - name: app-template
-    releaseName: cloudflare-ddns
-    namespace: networking
+    releaseName: echo-server
+    namespace: default
     repo: https://bjw-s.github.io/helm-charts/
     version: 1.5.0
     valuesFile: values.yaml

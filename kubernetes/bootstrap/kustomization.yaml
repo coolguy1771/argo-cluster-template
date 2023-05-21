@@ -1,0 +1,11 @@
+bases:
+  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.6.1
+
+# additional resources like ingress rules, cluster and repository secrets.
+resources:
+  - clusters-secrets.yaml
+  - repos-secrets.yaml
+
+# changes to config maps
+patchesStrategicMerge:
+  - overlays/argo-cd-cm.yaml

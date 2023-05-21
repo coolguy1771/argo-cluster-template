@@ -1,0 +1,7 @@
+---
+apiVersion: viaduct.ai/v1
+kind: ksops
+metadata:
+  name: cluster-secrets
+files:
+  - cluster-secrets.yaml

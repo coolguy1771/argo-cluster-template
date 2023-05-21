@@ -1,5 +1,2 @@
 crds:
   enabled: true
-psp:
-  create: false
-  

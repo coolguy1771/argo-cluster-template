@@ -1,5 +1,4 @@
-interval: 2m
-# logLevel: debug
+fullnameOverride: external-dns
 provider: cloudflare
 env:
   - name: CF_API_EMAIL
@@ -13,10 +12,12 @@ env:
         name: external-dns-secret
         key: api-key
 extraArgs:
+  - --annotation-filter=external-dns.alpha.kubernetes.io/target
   - --cloudflare-proxied
-  - --annotation-filter=external-dns.home.arpa/enabled in (true)
+  - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
+  - --crd-source-kind=DNSEndpoint
 policy: sync
-sources: ["ingress"]
+sources: ["crd", "ingress"]
 txtPrefix: k8s.
 txtOwnerId: default
 domainFilters: ["${SECRET_DOMAIN}"]

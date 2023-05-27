@@ -1,5 +1,5 @@
 bases:
-  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.6.1
+  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.7.3
 
 # additional resources like ingress rules, cluster and repository secrets.
 resources:
